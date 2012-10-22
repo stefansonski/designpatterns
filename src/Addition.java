@@ -1,7 +1,7 @@
 
-public class AddNode extends Node {
+public class Addition extends Operation {
 	
-	public AddNode() {
+	public Addition() {
 		setOperation('+');
 	}
 

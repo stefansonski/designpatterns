@@ -1,14 +1,14 @@
-abstract public class Node extends Component {
-	private Component left;
-	private Component right;
+abstract public class Operation extends Expression {
+	private Expression left;
+	private Expression right;
 	private char operation;
 	
-	public void setLeftComponent(Component component) {
-		this.left = component;
+	public void setLeftComponent(Expression expression) {
+		this.left = expression;
 	}
 	
-	public void setRightComponent(Component component) {
-		this.right = component;
+	public void setRightComponent(Expression expression) {
+		this.right = expression;
 	}
 	
 	public void print() {
@@ -19,11 +19,11 @@ abstract public class Node extends Component {
 		System.out.print(")");
 	}
 	
-	public Component getLeftComponent() {
+	public Expression getLeftComponent() {
 		return left;
 	}
 	
-	public Component getRightComponent() {
+	public Expression getRightComponent() {
 		return right;
 	}
 	
@@ -38,22 +38,22 @@ abstract public class Node extends Component {
 		Variable b = new Variable('b',4);
 		Variable c = new Variable('c',7);
 		Variable d = new Variable('d',9);
-		Node leftNode = new AddNode();
+		Operation leftNode = new Addition();
 		leftNode.setLeftComponent(a);
 		leftNode.setRightComponent(b);
-		SubNode rightNode = new SubNode(); 
+		Subtraction rightNode = new Subtraction(); 
 		rightNode.setLeftComponent(a);
 		rightNode.setRightComponent(c);
-		MulNode root0 = new MulNode();
+		Multiplication root0 = new Multiplication();
 		root0.setLeftComponent(leftNode);
 		root0.setRightComponent(rightNode);
-		leftNode = new MulNode();
+		leftNode = new Multiplication();
 		leftNode.setLeftComponent(b);
 		leftNode.setRightComponent(d);
-		SubNode root1 = new SubNode();
+		Subtraction root1 = new Subtraction();
 		root1.setLeftComponent(leftNode);
 		root1.setRightComponent(a);
-		AddNode root = new AddNode();
+		Addition root = new Addition();
 		root.setLeftComponent(root0);
 		root.setRightComponent(root1);
 		root.print();

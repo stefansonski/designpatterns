@@ -1,7 +1,7 @@
 
-public class SubNode extends Node {
+public class Subtraction extends Operation {
 
-	public SubNode() {
+	public Subtraction() {
 		setOperation('-');
 	}
 

@@ -1,7 +1,7 @@
 
-public class DivNode extends Node {
+public class Division extends Operation {
 
-	public DivNode() {
+	public Division() {
 		setOperation('/');
 	}
 

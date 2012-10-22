@@ -1,5 +1,5 @@
 
-public class Variable extends Component {
+public class Variable extends Expression {
 	private char variable;
 	private int value;
 	

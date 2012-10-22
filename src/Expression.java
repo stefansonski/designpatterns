@@ -1,5 +1,5 @@
 
-abstract public class Component {	
+abstract public class Expression {	
 	abstract public void print();
 	abstract public int evaluate();
 }

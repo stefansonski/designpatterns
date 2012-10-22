@@ -1,7 +1,7 @@
 
-public class MulNode extends Node {
+public class Multiplication extends Operation {
 
-	public MulNode() {
+	public Multiplication() {
 		setOperation('*');
 	}
 
