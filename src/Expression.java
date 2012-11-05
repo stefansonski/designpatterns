@@ -1,5 +1,5 @@
 
-abstract public class Expression {	
-	abstract public void print();
-	abstract public int evaluate();
+abstract public class Expression {
+	abstract public int operate(int a, int b);
+	abstract public String toString();
 }

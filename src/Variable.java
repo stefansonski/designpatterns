@@ -1,18 +1,20 @@
 
 public class Variable extends Expression {
-	private char variable;
+	private String variable;
 	private int value;
 	
-	public Variable(char variable, int value) {
+	public Variable(String variable, int value) {
 		this.variable = variable;
 		this.value = value;
 	}
-	
-	public void print() {
-		System.out.print(variable);
+
+	@Override
+	public String toString() {
+		return variable;
 	}
-	
-	public int evaluate() {
+
+	@Override
+	public int operate(int a, int b) {
 		return value;
 	}
 }

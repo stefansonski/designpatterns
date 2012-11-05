@@ -5,66 +5,63 @@
  * Also {@link #evaluate()} has to be implemented depending on the new operation.
  * @author Stefan Sonski
  */
-abstract public class Operation extends Expression {
+abstract public class Operation extends Expression implements Aggregate {
 	private Expression left;
 	private Expression right;
-	private char operation;
 	
-	public void setLeftComponent(Expression expression) {
+	public void setLeft(Expression expression) {
 		this.left = expression;
 	}
 	
-	public void setRightComponent(Expression expression) {
+	public void setRight(Expression expression) {
 		this.right = expression;
 	}
 	
-	public void print() {
-		System.out.print("(");
-		left.print();
-		System.out.print(operation);
-		right.print();
-		System.out.print(")");
-	}
-	
-	public Expression getLeftComponent() {
+	public Expression getLeft() {
 		return left;
 	}
 	
-	public Expression getRightComponent() {
+	public Expression getRight() {
 		return right;
 	}
 	
-	public void setOperation(char operation) {
-		this.operation = operation;
+	public Iterator createPrintIterator() {
+		return new PrintIterator(this);
 	}
 	
-	abstract public int evaluate();	
+	public Iterator createEvaluateIterator() {
+		return new EvaluateIterator(this);
+	}
 	
 	public static void main(String[] args) {
-		Variable a = new Variable('a',3);
-		Variable b = new Variable('b',4);
-		Variable c = new Variable('c',7);
-		Variable d = new Variable('d',9);
+		Variable a = new Variable("a",3);
+		Variable b = new Variable("b",4);
+		Variable c = new Variable("c",7);
+		Variable d = new Variable("d",9);
 		Operation leftNode = new Addition();
-		leftNode.setLeftComponent(a);
-		leftNode.setRightComponent(b);
+		leftNode.setLeft(a);
+		leftNode.setRight(b);
 		Subtraction rightNode = new Subtraction(); 
-		rightNode.setLeftComponent(a);
-		rightNode.setRightComponent(c);
+		rightNode.setLeft(a);
+		rightNode.setRight(c);
 		Multiplication root0 = new Multiplication();
-		root0.setLeftComponent(leftNode);
-		root0.setRightComponent(rightNode);
+		root0.setLeft(leftNode);
+		root0.setRight(rightNode);
 		leftNode = new Multiplication();
-		leftNode.setLeftComponent(b);
-		leftNode.setRightComponent(d);
+		leftNode.setLeft(b);
+		leftNode.setRight(d);
 		Subtraction root1 = new Subtraction();
-		root1.setLeftComponent(leftNode);
-		root1.setRightComponent(a);
+		root1.setLeft(leftNode);
+		root1.setRight(a);
 		Addition root = new Addition();
-		root.setLeftComponent(root0);
-		root.setRightComponent(root1);
-		root.print();
+		root.setLeft(root0);
+		root.setRight(root1);
 		
-		System.out.println("\n" + root.evaluate());
+		Iterator iter = root.createPrintIterator();
+		iter.traverse();
+		
+		iter = root.createEvaluateIterator();
+		iter.traverse();
+		
 	}
 }

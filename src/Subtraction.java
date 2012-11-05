@@ -1,13 +1,14 @@
 
 public class Subtraction extends Operation {
 
-	public Subtraction() {
-		setOperation('-');
+	@Override
+	public String toString() {
+		return "-";
 	}
 
 	@Override
-	public int evaluate() {
-		return getLeftComponent().evaluate() - getRightComponent().evaluate();
+	public int operate(int a, int b) {
+		return a - b;
 	}
 	
 }
