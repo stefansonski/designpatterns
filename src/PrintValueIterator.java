@@ -1,16 +1,16 @@
 
-public class PrintIterator extends AbstractIterator {
+public class PrintValueIterator extends AbstractIterator {
 	
-	private PrintVisitor visitor = new PrintVisitor();
+	private PrintValueVisitor visitor = new PrintValueVisitor();
 	
-	public PrintIterator(Operation root) {
+	public PrintValueIterator(Operation root) {
 		super(root);
 	}
 
 	@Override
 	public void traverse() {
 		traverse(root);
-		System.out.print("\n");
+		System.out.print(" = ");
 	}
 	
 	private void traverse(Expression node) {

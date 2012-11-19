@@ -1,5 +1,7 @@
 
 public class EvaluateIterator extends AbstractIterator{
+	
+	private EvaluateVisitor visitor = new EvaluateVisitor();
 
 	public EvaluateIterator(Operation root) {
 		super(root);
@@ -7,18 +9,19 @@ public class EvaluateIterator extends AbstractIterator{
 
 	@Override
 	public void traverse() {
-		System.out.println(visit(root));
+		traverse(root);
+		System.out.print(visitor.getResult());
 	}
 	
-	public int visit(Expression node) {
+	private void traverse(Expression node) {
 		if(node instanceof Operation) {
 			Operation op = (Operation)node;
-			int left = visit(op.getLeft());
-			int right = visit(op.getRight());
-			return node.operate(left, right);
+			traverse(op.getLeft());
+			traverse(op.getRight());
+			node.accept(visitor);
 		}
 		else {
-			return node.operate(0, 0);
+			node.accept(visitor);
 		}
 	}
 

@@ -33,6 +33,10 @@ abstract public class Operation extends Expression implements Aggregate {
 		return new EvaluateIterator(this);
 	}
 	
+	public Iterator createPrintValueIterator() {
+		return new PrintValueIterator(this);
+	}
+	
 	public static void main(String[] args) {
 		Variable a = new Variable("a",3);
 		Variable b = new Variable("b",4);
@@ -58,6 +62,9 @@ abstract public class Operation extends Expression implements Aggregate {
 		root.setRight(root1);
 		
 		Iterator iter = root.createPrintIterator();
+		iter.traverse();
+
+		iter = root.createPrintValueIterator();
 		iter.traverse();
 		
 		iter = root.createEvaluateIterator();

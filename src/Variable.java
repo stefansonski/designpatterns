@@ -7,14 +7,17 @@ public class Variable extends Expression {
 		this.variable = variable;
 		this.value = value;
 	}
-
-	@Override
-	public String toString() {
+	
+	public String getVariable() {
 		return variable;
+	}
+	
+	public int getValue() {
+		return value;
 	}
 
 	@Override
-	public int operate(int a, int b) {
-		return value;
+	public void accept(AbstractVisitor visitor) {
+		visitor.visit(this);
 	}
 }
