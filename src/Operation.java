@@ -5,7 +5,7 @@
  * Also {@link #evaluate()} has to be implemented depending on the new operation.
  * @author Stefan Sonski
  */
-abstract public class Operation extends Expression implements Aggregate {
+abstract public class Operation extends Expression {
 	private Expression left;
 	private Expression right;
 	
@@ -23,18 +23,6 @@ abstract public class Operation extends Expression implements Aggregate {
 	
 	public Expression getRight() {
 		return right;
-	}
-	
-	public Iterator createPrintIterator() {
-		return new PrintIterator(this);
-	}
-	
-	public Iterator createEvaluateIterator() {
-		return new EvaluateIterator(this);
-	}
-	
-	public Iterator createPrintValueIterator() {
-		return new PrintValueIterator(this);
 	}
 	
 	public static void main(String[] args) {
@@ -61,13 +49,20 @@ abstract public class Operation extends Expression implements Aggregate {
 		root.setLeft(root0);
 		root.setRight(root1);
 		
-		Iterator iter = root.createPrintIterator();
-		iter.traverse();
-
-		iter = root.createPrintValueIterator();
+		AbstractVisitor visitor = new PrintVisitor();
+		Iterator iter = visitor.createIterator(root);
 		iter.traverse();
 		
-		iter = root.createEvaluateIterator();
+		visitor = new PolishPrintVisitor();
+		iter = visitor.createIterator(root);
+		iter.traverse();
+
+		visitor = new PrintValueVisitor();
+		iter = visitor.createIterator(root);
+		iter.traverse();
+		
+		visitor = new EvaluateVisitor();
+		iter = visitor.createIterator(root);
 		iter.traverse();
 		
 	}

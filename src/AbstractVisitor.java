@@ -1,5 +1,6 @@
 
 public abstract class AbstractVisitor {
+	public abstract Iterator createIterator(Operation root);
 	public abstract void visit(Addition addition);
 	public abstract void visit(Subtraction subtraction);
 	public abstract void visit(Multiplication multiplication);

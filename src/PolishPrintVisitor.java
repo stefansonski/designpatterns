@@ -1,5 +1,5 @@
 
-public class PrintVisitor extends AbstractVisitor {
+public class PolishPrintVisitor extends AbstractVisitor {
 
 	@Override
 	public void visit(Addition addition) {
@@ -28,7 +28,7 @@ public class PrintVisitor extends AbstractVisitor {
 
 	@Override
 	public Iterator createIterator(Operation root) {
-		return new PrintIterator(root, this);
+		return new PolishPrintIterator(root, this);
 	}
 
 }

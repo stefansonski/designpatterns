@@ -41,4 +41,9 @@ public class EvaluateVisitor extends AbstractVisitor {
 		return results.pop();
 	}
 
+	@Override
+	public Iterator createIterator(Operation root) {
+		return new EvaluateIterator(root, this);
+	}
+
 }

@@ -1,10 +1,8 @@
 
 public class PrintValueIterator extends AbstractIterator {
 	
-	private PrintValueVisitor visitor = new PrintValueVisitor();
-	
-	public PrintValueIterator(Operation root) {
-		super(root);
+	public PrintValueIterator(Operation root, AbstractVisitor visitor) {
+		super(root, visitor);
 	}
 
 	@Override

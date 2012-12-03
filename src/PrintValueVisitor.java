@@ -26,4 +26,9 @@ public class PrintValueVisitor extends AbstractVisitor {
 		System.out.print(variable.getValue());
 	}
 
+	@Override
+	public Iterator createIterator(Operation root) {
+		return new PrintValueIterator(root, this);
+	}
+
 }

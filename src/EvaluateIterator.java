@@ -1,10 +1,11 @@
 
 public class EvaluateIterator extends AbstractIterator{
 	
-	private EvaluateVisitor visitor = new EvaluateVisitor();
+	protected EvaluateVisitor visitor;
 
-	public EvaluateIterator(Operation root) {
-		super(root);
+	public EvaluateIterator(Operation root, EvaluateVisitor visitor) {
+		super(root, visitor);
+		this.visitor = visitor;
 	}
 
 	@Override
