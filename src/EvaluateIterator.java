@@ -11,7 +11,7 @@ public class EvaluateIterator extends AbstractIterator{
 	@Override
 	public void traverse() {
 		traverse(root);
-		System.out.print(visitor.getResult());
+		System.out.print(visitor.getResult() + "\n");
 	}
 	
 	private void traverse(Expression node) {
